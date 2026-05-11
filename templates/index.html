@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 380px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-left: 5%;
+            font-size: 13px;
+            color: #555;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 5px 0 12px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #5b86e5;
+            outline: none;
+        }
+
+        button {
+            width: 95%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #5b86e5;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #4a75d1;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #e6f7ff;
+            color: #333;
+            font-weight: 500;
+        }
+
+        footer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🏠 House Price Predictor</h1>
+
+        <form action="/predict" method="post">
+
+            <!-- <label>Location</label>
+            <select name="location" required>
+                <option value="whitefield">Whitefield</option>
+                <option value="indiranagar">Indiranagar</option>
+                <option value="electronic city">Electronic City</option>
+            </select> -->
+
+            <label>Location</label>
+            <input type="text" name="location" step="any">
+
+            <label>Total Sqft</label>
+            <input type="number" name="total_sqft" step="any" required>
+
+            <label>Bathrooms</label>
+            <input type="number" name="bath" step="any" required>
+
+            <label>BHK</label>
+            <input type="number" name="BHK" required>
+
+            <button type="submit">Predict Price</button>
+
+        </form>
+
+        {% if result %}
+        <div class="result">
+            {{ result }}
+        </div>
+        {% endif %}
+
+        <footer>
+            Built with ❤️ using Flask & ML
+        </footer>
+    </div>
+</body>
+
+</html>
